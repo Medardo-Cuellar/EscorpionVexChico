@@ -17,11 +17,11 @@ using namespace vex;
 // A global instance of competition
 competition Competition;
 
-void whenLimitSwitchAIsPressed()
+void LimitSwitchTenaza()
 {
 Tenaza.stop();
 }
-void whenLimitSwitchEIsPressed()
+void LimitSwitchColita()
 {
   ColitaAbajo.stop();
   ColitaArriba.stop();
@@ -197,6 +197,7 @@ void usercontrol(void) {
     }
     //control de tenaza
       if (Controller1.ButtonR2.pressing()){
+        LimitTenaza.pressed(LimitSwitchTenaza);
          Tenaza.spin(forward);
       }
       else if (Controller1.ButtonR1.pressing()){
@@ -208,6 +209,7 @@ void usercontrol(void) {
 
       //control de Colita
       if (Controller1.ButtonL1.pressing()){
+          LimitColita.pressed(LimitSwitchColita);
           ColitaArriba.spin(forward);
           ColitaAbajo.spin(forward);
       }

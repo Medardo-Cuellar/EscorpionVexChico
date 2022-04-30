@@ -9,8 +9,8 @@ brain  Brain;
 
 // VEXcode device constructors
 
-limit LimitSwitchA = limit(Brain.ThreeWirePort.A);
-limit LimitSwitchE = limit(Brain.ThreeWirePort.E);
+limit LimitTenaza = limit(Brain.ThreeWirePort.A);
+limit LimitColita = limit(Brain.ThreeWirePort.E);
 
 gyro TurnGyroSmart = gyro(Brain.ThreeWirePort.H);
 

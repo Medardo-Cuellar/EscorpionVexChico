@@ -13,8 +13,8 @@ extern motor ColitaAbajo;
 
 extern sonar RangeFinderG;
  
-extern limit LimitSwitchA;
-extern limit LimitSwitchE;
+extern limit LimitColita;
+extern limit LimitTenaza;
 
 extern gyro TurnGyroSmart;
 
