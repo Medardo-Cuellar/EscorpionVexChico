@@ -26,6 +26,20 @@ void LimitSwitchColita()
   ColitaAbajo.stop();
   ColitaArriba.stop();
 }
+void LimiTenaza(int spd)
+{
+  int a=0;
+  while(a==0)
+  {
+    Tenaza.spin(reverse, spd, pct);
+    if (LimitTenaza.pressing()==true)
+    {
+      Tenaza.rotateFor(forward, 35, degrees);
+      Tenaza.stop(hold);
+      a=1;
+    }
+  }
+}
 // define your global instances of motors and other devices here
 
 /*---------------------------------------------------------------------------*/
@@ -63,36 +77,21 @@ void autonomous(void) {
   // .......................................................................... 
     // Drives robot backwards 1.15 meters at the default 50% velocity
   //  Tenaza.spinFor(reverse, 100, degrees);
+  
+  LimiTenaza(60);
+
   Drivetrain.setDriveVelocity(100, percent);
-  Drivetrain.driveFor(reverse, 40, inches);
-  
-  // moverse con sensor ultrasonico
-  while (RangeFinderG.distance(mm) > 100) {
-    Drivetrain.drive(reverse);
-    Brain.Screen.print("%.2f", RangeFinderG.distance(mm));
-    wait(200, msec);
-    Brain.Screen.setCursor(1, 1);
-    Brain.Screen.clearScreen();
-    wait(5, msec);
-  }
+  Drivetrain.driveFor(forward, 40, inches);
   Drivetrain.stop();
-  /*
+
   Drivetrain.setDriveVelocity(50, percent);
-  Drivetrain.driveFor(reverse, 3, inches);
+  Drivetrain.driveFor(forward, 3, inches);
   wait(1, seconds);
-  */
 
-  ColitaAbajo.spinFor(reverse,40,degrees);
-  ColitaArriba.spinFor(reverse,40,degrees);
-  
-  // Drives the robot in reverse for 6 inches at 90% velocity
   Drivetrain.setDriveVelocity(90, percent);
-  Drivetrain.driveFor(forward, 47, inches);
+  Drivetrain.driveFor(reverse, 47, inches);
   wait(1, seconds);
 
-  //Tenaza.spinFor(reverse, 100, degrees);
-
-  // Turns the robot 90 degrees to the right at the default 50% velocity
   Drivetrain.setTurnVelocity(25, percent);
   Drivetrain.turnFor(right, 100, degrees);
   wait(1, seconds);
@@ -210,7 +209,6 @@ void usercontrol(void) {
     }
     //control de tenaza
       if (Controller1.ButtonR2.pressing()){
-        LimitTenaza.pressed(LimitSwitchTenaza);
          Tenaza.spin(forward);
       }
       else if (Controller1.ButtonR1.pressing()){
@@ -222,7 +220,6 @@ void usercontrol(void) {
 
       //control de Colita
       if (Controller1.ButtonL1.pressing()){
-          LimitColita.pressed(LimitSwitchColita);
           ColitaArriba.spin(forward);
           ColitaAbajo.spin(forward);
       }
