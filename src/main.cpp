@@ -75,11 +75,7 @@ void autonomous(void) {
   // ..........................................................................
   // Insert autonomous user code here.
   // .......................................................................... 
-    // Drives robot backwards 1.15 meters at the default 50% velocity
-  //  Tenaza.spinFor(reverse, 100, degrees);
   
-  LimiTenaza(60);
-
   Drivetrain.setDriveVelocity(100, percent);
   Drivetrain.driveFor(forward, 40, inches);
   Drivetrain.stop();
@@ -87,6 +83,10 @@ void autonomous(void) {
   Drivetrain.setDriveVelocity(50, percent);
   Drivetrain.driveFor(forward, 3, inches);
   wait(1, seconds);
+
+  LimiTenaza(60);
+
+
 
   Drivetrain.setDriveVelocity(90, percent);
   Drivetrain.driveFor(reverse, 47, inches);
