@@ -64,10 +64,23 @@ void autonomous(void) {
     // Drives robot backwards 1.15 meters at the default 50% velocity
   //  Tenaza.spinFor(reverse, 100, degrees);
   Drivetrain.setDriveVelocity(100, percent);
-  Drivetrain.driveFor(reverse, 44, inches);
+  Drivetrain.driveFor(reverse, 40, inches);
+  
+  // moverse con sensor ultrasonico
+  while (RangeFinderG.distance(mm) > 100) {
+    Drivetrain.drive(reverse);
+    Brain.Screen.print("%.2f", RangeFinderG.distance(mm));
+    wait(200, msec);
+    Brain.Screen.setCursor(1, 1);
+    Brain.Screen.clearScreen();
+    wait(5, msec);
+  }
+  Drivetrain.stop();
+  /*
   Drivetrain.setDriveVelocity(50, percent);
   Drivetrain.driveFor(reverse, 3, inches);
   wait(1, seconds);
+  */
 
   ColitaAbajo.spinFor(reverse,40,degrees);
   ColitaArriba.spinFor(reverse,40,degrees);
