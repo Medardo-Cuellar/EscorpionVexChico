@@ -77,7 +77,7 @@ void autonomous(void) {
   // .......................................................................... 
   
   Drivetrain.setDriveVelocity(100, percent);
-  Drivetrain.driveFor(forward, 40, inches);
+  Drivetrain.driveFor(forward, 56, inches);
   Drivetrain.stop();
 
   Drivetrain.setDriveVelocity(50, percent);
