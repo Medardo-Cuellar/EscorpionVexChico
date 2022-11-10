@@ -89,12 +89,13 @@ void autonomous(void) {
 
 
   Drivetrain.setDriveVelocity(90, percent);
-  Drivetrain.driveFor(reverse, 47, inches);
+  Drivetrain.driveFor(reverse, 40, inches);
   wait(1, seconds);
 
   Drivetrain.setTurnVelocity(25, percent);
-  Drivetrain.turnFor(right, 100, degrees);
+  Drivetrain.turnFor(left, 100, degrees);
   wait(1, seconds);
+
 
   // Turns the robot to the left at 25% velocity
   //Drivetrain.turnFor(left, 90, degrees);
